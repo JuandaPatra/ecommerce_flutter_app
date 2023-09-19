@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/presentation/home/widgets/list_product_widget.dart';
 import 'package:ecommerce_app/presentation/widgets/banner_widget.dart';
 import 'package:ecommerce_app/presentation/widgets/list_category_widget.dart';
 import 'package:flutter/material.dart';
@@ -100,7 +101,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: Column(
+      body:const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
@@ -127,7 +128,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 8,
           ),
-          // Expanded(child: ListProductWidget())
+          Expanded(child: ListProductWidget())
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
