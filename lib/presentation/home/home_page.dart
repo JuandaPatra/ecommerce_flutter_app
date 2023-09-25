@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/bloc/checkout/checkout_bloc.dart';
+import 'package:ecommerce_app/bloc/checkout/checkout_state.dart';
 import 'package:ecommerce_app/presentation/home/widgets/list_product_widget.dart';
 import 'package:ecommerce_app/presentation/home/widgets/banner_widget.dart';
 import 'package:ecommerce_app/presentation/home/widgets/list_category_widget.dart';
@@ -201,59 +203,46 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              child: const badges.Badge(
-                badgeStyle:
-                    badges.BadgeStyle(elevation: 0, badgeColor: Colors.white),
-                // elevation: 0,
-                badgeContent: Text(
-                  '0',
-                  style: TextStyle(color: Color(0xffEE4D2D)),
-                ),
-                // badgeColor: Colors.white,
-                child: Icon(
-                  Icons.shopping_cart_outlined,
-                ),
+              
+              child: BlocBuilder<CheckoutBloc, CheckoutState>(
+                builder: (context, state) {
+                  if (state is CheckoutLoaded) {
+                    return badges.Badge(
+                      badgeStyle: const badges.BadgeStyle(
+                          elevation: 0, badgeColor: Colors.white),
+                      // elevation: 0,
+                      badgeContent: Text(
+                        '${state.items.length} ',
+                        style: const TextStyle(color: Color(0xffEE4D2D)),
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          // Navigator.push(context,
+                          //     MaterialPageRoute(builder: (context) {
+                          //   return const CartPage();
+                          // }));
+                        },
+                        child: const Icon(
+                          Icons.shopping_cart_outlined,
+                        ),
+                      ),
+                    );
+                  }
+                  return const badges.Badge(
+                    badgeStyle: badges.BadgeStyle(
+                        elevation: 0, badgeColor: Colors.white),
+                    // elevation: 0,
+                    badgeContent: Text(
+                      '0',
+                      style: TextStyle(color: Color(0xffEE4D2D)),
+                    ),
+                    // badgeColor: Colors.white,
+                    child: Icon(
+                      Icons.shopping_cart_outlined,
+                    ),
+                  );
+                },
               ),
-              // child: BlocBuilder<CheckoutBloc, CheckoutState>(
-              //   builder: (context, state) {
-              //     if (state is CheckoutLoaded) {
-              //       return badges.Badge(
-              //         badgeStyle: const badges.BadgeStyle(
-              //             elevation: 0, badgeColor: Colors.white),
-              //         // elevation: 0,
-              //         badgeContent: Text(
-              //           '${state.items.length}',
-              //           style: const TextStyle(color: Color(0xffEE4D2D)),
-              //         ),
-              //         // badgeColor: Colors.white,
-              //         child: InkWell(
-              //           onTap: () {
-              //             Navigator.push(context,
-              //                 MaterialPageRoute(builder: (context) {
-              //               // return const CartPage();
-              //             }));
-              //           },
-              //           child: const Icon(
-              //             Icons.shopping_cart_outlined,
-              //           ),
-              //         ),
-              //       );
-              //     }
-              //     return const badges.Badge(
-              //       badgeStyle: badges.BadgeStyle(
-              //           elevation: 0, badgeColor: Colors.white),
-              //       // elevation: 0,
-              //       badgeContent: Text(
-              //         '0',
-              //         style: TextStyle(color: Color(0xffEE4D2D)),
-              //       ),
-              //       // badgeColor: Colors.white,
-              //       child: Icon(
-              //         Icons.shopping_cart_outlined,
-              //       ),
-              //     );
-              //   },
-              // ),
             ),
             label: '',
           ),

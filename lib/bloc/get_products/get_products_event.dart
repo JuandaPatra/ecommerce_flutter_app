@@ -2,4 +2,5 @@
 abstract class GetProductsEvent{
 }
 
-class DoGetProductsEvent extends GetProductsEvent {}
+class DoGetProductsEvent extends GetProductsEvent {
+}

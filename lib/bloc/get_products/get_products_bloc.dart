@@ -7,7 +7,7 @@ class GetProductsBloc extends Bloc<GetProductsEvent, GetProductsState> {
   final ProductRemoteDataSource productRemoteDataSource;
 
   GetProductsBloc(this.productRemoteDataSource) : super(GetProductsInitial()) {
-    on<DoGetProductsEvent>(
+    on(
       (event, emit) async {
         emit(GetProductsLoading());
         final result = await productRemoteDataSource.getAllProducts();

@@ -9,7 +9,6 @@ class ProductRemoteDataSource{
     final response = await http.get(Uri.parse('${GlobalVariables.baseUrl}api/products'));
 
     if(response.statusCode == 200){
-      print(response.body);
       return Right(ListProductResponseModel.fromRawJson(response.body));
     }else{
       return const Left('proses gagal');

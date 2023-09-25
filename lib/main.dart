@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/bloc/checkout/checkout_bloc.dart';
 import 'package:ecommerce_app/bloc/get_products/get_products_bloc.dart';
 import 'package:ecommerce_app/data/datasources/product_remote_datasource.dart';
 import 'package:ecommerce_app/presentation/home/home_page.dart';
@@ -13,9 +14,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   BlocProvider(
-      create: (context) => GetProductsBloc(ProductRemoteDataSource()),
-      child: MaterialApp(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => GetProductsBloc(ProductRemoteDataSource()),
+        ),
+        BlocProvider(
+          create: (context) => CheckoutBloc(),
+        ),
+      ],
+      child: const MaterialApp(
         title: 'Flutter E-Commerce',
         debugShowCheckedModeBanner: false,
         home: MyHomePage(),

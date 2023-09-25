@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/bloc/checkout/checkout_bloc.dart';
+import 'package:ecommerce_app/bloc/checkout/checkout_event.dart';
 import 'package:ecommerce_app/bloc/get_products/get_products_bloc.dart';
 import 'package:ecommerce_app/bloc/get_products/get_products_event.dart';
 import 'package:ecommerce_app/bloc/get_products/get_products_state.dart';
@@ -24,7 +26,6 @@ class _ListProductWidgetState extends State<ListProductWidget> {
     return BlocBuilder<GetProductsBloc, GetProductsState>(
       builder: (context, state) {
         if (state is GetProductsError) {
-          
           return const Center(
             child: Text('data error'),
           );
@@ -45,7 +46,8 @@ class _ListProductWidgetState extends State<ListProductWidget> {
               childAspectRatio: 0.65,
             ),
             itemBuilder: (context, index) {
-              final Product product = state.listProductResponseModel.data![index] ;
+              final Product product =
+                  state.listProductResponseModel.data![index];
               return Card(
                 elevation: 2,
                 shadowColor: const Color(0xffEE4D2D),
@@ -59,15 +61,14 @@ class _ListProductWidgetState extends State<ListProductWidget> {
                     SizedBox(
                       width: 150,
                       height: 120,
-                      child: Image.network(
-                          '${product.attributes!.image!}'),
+                      child: Image.network('${product.attributes!.image!}'),
                     ),
                     const SizedBox(
                       height: 8,
                     ),
-                     Text(
+                    Text(
                       'Rp.${product.attributes!.price!}',
-                      style:const  TextStyle(
+                      style: const TextStyle(
                         color: Color(0xffEE4D2D),
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
@@ -76,7 +77,7 @@ class _ListProductWidgetState extends State<ListProductWidget> {
                     const SizedBox(
                       height: 4,
                     ),
-                     Padding(
+                    Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text(
                         "${product.attributes!.title!}",
@@ -132,7 +133,10 @@ class _ListProductWidgetState extends State<ListProductWidget> {
                             Row(
                               children: [
                                 InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    context.read<CheckoutBloc>().add(
+                                        RemoveFromCartEvent(product: product));
+                                  },
                                   child: const Icon(
                                     Icons.remove_circle_outline,
                                     size: 18,
@@ -144,7 +148,11 @@ class _ListProductWidgetState extends State<ListProductWidget> {
                                         EdgeInsets.symmetric(horizontal: 5),
                                     child: Text('1')),
                                 InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    context
+                                        .read<CheckoutBloc>()
+                                        .add(AddToCartEvent(product: product));
+                                  },
                                   child: const Icon(
                                     Icons.add_circle_outline,
                                     size: 18,
