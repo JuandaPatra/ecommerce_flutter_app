@@ -11,9 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter_fic6_ecommerce_tv/presentation/home/widgets/list_category_widget.dart';
 // import 'package:flutter_fic6_ecommerce_tv/presentation/home/widgets/list_product_widget.dart';
 import 'package:badges/badges.dart' as badges;
-// import 'package:flutter_fic6_ecommerce_tv/presentation/search/search_page.dart';
 
-// import '../../bloc/checkout/checkout_bloc.dart';
 import '../../common/global_variables.dart';
 
 class HomePage extends StatefulWidget {

@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/bloc/checkout/checkout_bloc.dart';
 import 'package:ecommerce_app/bloc/checkout/checkout_event.dart';
+import 'package:ecommerce_app/bloc/checkout/checkout_state.dart';
 import 'package:ecommerce_app/bloc/get_products/get_products_bloc.dart';
 import 'package:ecommerce_app/bloc/get_products/get_products_event.dart';
 import 'package:ecommerce_app/bloc/get_products/get_products_state.dart';
@@ -143,10 +144,21 @@ class _ListProductWidgetState extends State<ListProductWidget> {
                                     color: Color(0xffEE4D2D),
                                   ),
                                 ),
-                                const Padding(
+                                 Padding(
                                     padding:
                                         EdgeInsets.symmetric(horizontal: 5),
-                                    child: Text('1')),
+                                    child:
+                                        BlocBuilder<CheckoutBloc, CheckoutState>(
+                                      builder: (context, state) {
+                                        if(state is CheckoutLoaded){
+                                          final itemCheck = state.items.where((element) => element.id == product.id);
+
+                                          return Text('$itemCheck');
+                                        }
+                                        return const Text('0');
+                                      },
+                                      
+                                    )),
                                 InkWell(
                                   onTap: () {
                                     context
