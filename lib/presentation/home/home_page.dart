@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/presentation/home/widgets/list_product_widget.dart';
-import 'package:ecommerce_app/presentation/widgets/banner_widget.dart';
-import 'package:ecommerce_app/presentation/widgets/list_category_widget.dart';
+import 'package:ecommerce_app/presentation/home/widgets/banner_widget.dart';
+import 'package:ecommerce_app/presentation/home/widgets/list_category_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter_fic6_ecommerce_tv/presentation/account/account_page.dart';

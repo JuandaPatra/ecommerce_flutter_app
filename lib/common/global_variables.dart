@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GlobalVariables {
-  static const baseUrl = 'http://103.150.93.77:1339';
+  static const baseUrl = 'http://103.150.191.190:1338/';
   static const List<Map<String, String>> categoryImages = [
     {
       'title': 'Mobiles',

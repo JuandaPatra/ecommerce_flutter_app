@@ -1,5 +1,8 @@
+import 'package:ecommerce_app/bloc/get_products/get_products_bloc.dart';
+import 'package:ecommerce_app/data/datasources/product_remote_datasource.dart';
 import 'package:ecommerce_app/presentation/home/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,15 +13,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Flutter E-Commerce',
-      debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
-      
+    return   BlocProvider(
+      create: (context) => GetProductsBloc(ProductRemoteDataSource()),
+      child: MaterialApp(
+        title: 'Flutter E-Commerce',
+        debugShowCheckedModeBanner: false,
+        home: MyHomePage(),
+      ),
     );
   }
 }
-
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -26,7 +30,9 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body:  Center(child: HomePage(),),
+      body: Center(
+        child: HomePage(),
+      ),
     );
   }
 }
