@@ -1,0 +1,5 @@
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">103.150.191.190:1338</domain>
+    </domain-config>
+</network-security-config>

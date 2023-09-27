@@ -146,14 +146,13 @@ class _ListProductWidgetState extends State<ListProductWidget> {
                                 ),
                                  Padding(
                                     padding:
-                                        EdgeInsets.symmetric(horizontal: 5),
+                                      const  EdgeInsets.symmetric(horizontal: 5),
                                     child:
                                         BlocBuilder<CheckoutBloc, CheckoutState>(
                                       builder: (context, state) {
                                         if(state is CheckoutLoaded){
                                           final itemCheck = state.items.where((element) => element.id == product.id);
-
-                                          return Text('$itemCheck');
+                                          return Text('${itemCheck.length}');
                                         }
                                         return const Text('0');
                                       },

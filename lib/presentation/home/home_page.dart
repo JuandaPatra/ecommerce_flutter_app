@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/bloc/checkout/checkout_bloc.dart';
 import 'package:ecommerce_app/bloc/checkout/checkout_state.dart';
+import 'package:ecommerce_app/presentation/cart/cart_page.dart';
 import 'package:ecommerce_app/presentation/home/widgets/list_product_widget.dart';
 import 'package:ecommerce_app/presentation/home/widgets/banner_widget.dart';
 import 'package:ecommerce_app/presentation/home/widgets/list_category_widget.dart';
@@ -215,10 +216,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                       child: InkWell(
                         onTap: () {
-                          // Navigator.push(context,
-                          //     MaterialPageRoute(builder: (context) {
-                          //   return const CartPage();
-                          // }));
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return const CartPage();
+                          }));
                         },
                         child: const Icon(
                           Icons.shopping_cart_outlined,
